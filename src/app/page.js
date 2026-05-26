@@ -10,9 +10,15 @@ const fadeUp = {
 
 export default function Home() {
   return (
-    <div className="relative min-h-screen bg-black text-white overflow-hidden">
+    <div className="relative min-h-screen text-white overflow-hidden">
 
-      {/* Fundo Glow */}
+     {/*
+<div className="absolute inset-0 -z-10">
+  <div className="absolute top-[-200px] left-[-200px] w-[600px] h-[600px] bg-purple-600 rounded-full blur-[200px] opacity-30"></div>
+
+  <div className="absolute bottom-[-200px] right-[-200px] w-[600px] h-[600px] bg-indigo-600 rounded-full blur-[200px] opacity-30"></div>
+</div>
+*/}
       <div className="absolute inset-0 -z-10">
         <div className="absolute top-[-200px] left-[-200px] w-[600px] h-[600px] bg-purple-600 rounded-full blur-[200px] opacity-30"></div>
         <div className="absolute bottom-[-200px] right-[-200px] w-[600px] h-[600px] bg-indigo-600 rounded-full blur-[200px] opacity-30"></div>
@@ -209,3 +215,15 @@ export default function Home() {
     </div>
   );
 }
+
+<h1
+  className="
+  text-6xl
+  md:text-8xl
+  font-black
+  uppercase
+  tracking-widest
+  text-cyan-400
+  drop-shadow-[0_0_25px_rgba(0,217,255,.8)]
+  "
+></h1>
