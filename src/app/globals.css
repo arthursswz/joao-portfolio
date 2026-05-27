@@ -178,4 +178,7 @@ body::before{
 
     overflow-x: hidden;
   }
+  html {
+  scroll-behavior: smooth;
+}
 }

@@ -2,6 +2,9 @@
 
 import React from "react";
 import { motion } from "framer-motion";
+import Terminal from "@/components/uy/ui/terminal";
+import Projects from "@/components/uy/sections/projects";
+import Navbar from "@/components/uy/ui/navbar";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
@@ -57,9 +60,10 @@ export default function Home() {
           ))}
         </div>
       </motion.header>
-
+          <Terminal />
       {/* Sobre */}
       <motion.section
+      id="about"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
@@ -79,7 +83,9 @@ export default function Home() {
       </motion.section>
 
       {/* Experiências */}
-      <section className="max-w-5xl mx-auto px-6 py-16">
+      <section 
+      id="experience"
+      className="max-w-5xl mx-auto px-6 py-16">
         <h2 className="text-3xl font-semibold mb-10 text-purple-400">
           Experiências
         </h2>
@@ -169,6 +175,7 @@ export default function Home() {
       {/* Skills */}
       <motion.section
         initial="hidden"
+        id="skills"
         whileInView="visible"
         viewport={{ once: true }}
         variants={fadeUp}
@@ -205,7 +212,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-
+          <Projects />
       {/* Footer */}
       <footer className="text-center py-10 border-t border-zinc-800 text-gray-400">
         <p>Contato: jonharthur777@gmail.com</p>
@@ -216,14 +223,3 @@ export default function Home() {
   );
 }
 
-<h1
-  className="
-  text-6xl
-  md:text-8xl
-  font-black
-  uppercase
-  tracking-widest
-  text-cyan-400
-  drop-shadow-[0_0_25px_rgba(0,217,255,.8)]
-  "
-></h1>
