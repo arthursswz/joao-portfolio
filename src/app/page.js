@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 
 import Terminal from "@/components/uy/ui/terminal";
 import Projects from "@/components/uy/sections/projects";
+import CyberRain from "@/components/uy/ui/cyber-rain";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
@@ -14,9 +15,11 @@ const fadeUp = {
 export default function Home() {
   return (
     <div className="min-h-screen bg-[#050816] text-white flex overflow-hidden relative">
+       {/* CYBER RAIN BACKGROUND */}
+      <CyberRain />
 
       {/* BACKGROUND EFFECTS */}
-      <div className="absolute inset-0 -z-10 overflow-hidden">
+      <div className="absolute inset-0 z-0 overflow-hidden">
 
 
 {/* CYBER LINES */}
