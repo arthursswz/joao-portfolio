@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import Terminal from "@/components/uy/ui/terminal";
 import Projects from "@/components/uy/sections/projects";
 import CyberRain from "@/components/uy/ui/cyber-rain";
+import MobileNavbar from "@/components/uy/ui/mobile-navbar";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
@@ -17,6 +18,7 @@ export default function Home() {
     <div className="min-h-screen bg-[#050816] text-white flex overflow-hidden relative">
        {/* CYBER RAIN BACKGROUND */}
       <CyberRain />
+      <MobileNavbar />
 
       {/* BACKGROUND EFFECTS */}
       <div className="absolute inset-0 z-0 overflow-hidden">
@@ -211,7 +213,48 @@ export default function Home() {
           "
         >
 
-          <div className="max-w-6xl">
+          <div className="max-w-6xl grid lg:grid-cols-2 gap-16 items-center">
+
+
+
+
+              <div className="relative flex justify-center">
+
+  {/* GLOW */}
+  <div
+    className="
+      absolute
+      w-[320px]
+      h-[320px]
+      rounded-full
+      bg-fuchsia-500/20
+      blur-[120px]
+    "
+  />
+
+  {/* IMAGE */}
+  <div
+    className="
+      relative
+      w-[300px]
+      h-[300px]
+      rounded-full
+      overflow-hidden
+      border
+      border-cyan-400/30
+      shadow-[0_0_40px_rgba(0,255,255,.2)]
+    "
+  >
+    <img
+      src="/foto.jpg"
+      alt="João Arthur"
+      className="w-full h-full object-cover"
+    />
+  </div>
+
+</div>
+
+
 
             <p
               className="
