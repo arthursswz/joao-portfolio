@@ -7,7 +7,7 @@ import Terminal from "@/components/uy/ui/terminal";
 import Projects from "@/components/uy/sections/projects";
 import CyberRain from "@/components/uy/ui/cyber-rain";
 import MobileNavbar from "@/components/uy/ui/mobile-navbar";
-
+import CursorGlow from "@/components/uy/ui/cursor-glow";
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
   visible: { opacity: 1, y: 0 }
@@ -18,6 +18,8 @@ export default function Home() {
     <div className="min-h-screen bg-[#050816] text-white flex overflow-hidden relative">
        {/* CYBER RAIN BACKGROUND */}
       <CyberRain />
+      <CursorGlow />
+      <div className="crt"></div>
       <MobileNavbar />
 
       {/* BACKGROUND EFFECTS */}
