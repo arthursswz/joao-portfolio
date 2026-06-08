@@ -2,6 +2,9 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { useRef } from "react";
+import { useInView } from "framer-motion";
+import { useGlitch } from "@/hooks/useGlitch";
 
 const projects = [
   {
@@ -26,6 +29,10 @@ const projects = [
 ];
 
 export default function Projects() {
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: false, margin: "-100px" });
+  const glitching = useGlitch(inView);
+
   return (
     <section
       id="projects"
@@ -43,16 +50,15 @@ export default function Projects() {
           // PROJECT_ARCHIVE
         </p>
 
-        <h2
-          className="
-            text-5xl
-            font-black
-            mb-16
-            text-fuchsia-500
-          "
-        >
-          Projetos
-        </h2>
+    <h2
+  ref={ref}
+  data-text="Projetos"
+  className={`glitch-wrapper text-5xl font-black mb-16 text-fuchsia-500 ${
+    glitching ? "is-glitching" : ""
+  }`}
+>
+  Projetos
+</h2>
 
       </motion.div>
 
