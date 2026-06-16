@@ -6,11 +6,12 @@ import { useEffect, useState } from "react";
 export default function Terminal() {
 
   const lines = [
-    "> initializing portfolio...",
-    "> loading developer profile...",
-    "> checking technologies...",
-    "✔ access granted"
-  ];
+  "> booting backend environment...",
+  "> loading API services...",
+  "> connecting to database...",
+  "> checking automation modules...",
+  "✔ backend system online"
+];
 
   const [displayedLines, setDisplayedLines] = useState([]);
 
@@ -128,33 +129,38 @@ export default function Terminal() {
         {/* INFO */}
         <div className="space-y-4 text-zinc-300">
 
-          <p>
-            <span className="text-cyan-400">$</span>{" "}
-            Nome: João Arthur de Oliveira Silva
-          </p>
+         <p>
+  <span className="text-cyan-400">$</span>{" "}
+  Nome: João Arthur de Oliveira Silva
+</p>
 
-          <p>
-            <span className="text-cyan-400">$</span>{" "}
-            Formação: Engenharia da Computação
-          </p>
+<p>
+  <span className="text-cyan-400">$</span>{" "}
+  Formação: Engenharia da Computação
+</p>
 
-          <p>
-            <span className="text-cyan-400">$</span>{" "}
-            Foco: Frontend • Hardware • Automação
-          </p>
+<p>
+  <span className="text-cyan-400">$</span>{" "}
+  Área: Backend • Automação • Banco de Dados • Infraestrutura
+</p>
 
-          <p>
-            <span className="text-cyan-400">$</span>{" "}
-            Stack: JavaScript • React • Next.js • Tailwind
-          </p>
+<p>
+  <span className="text-cyan-400">$</span>{" "}
+  Stack: Node.js • TypeScript • MySQL • Java • Git
+</p>
 
-          <p>
-            <span className="text-cyan-400">$</span>{" "}
-            Status: Building futuristic interfaces...
-            <span className="animate-pulse text-cyan-400 ml-2">
-              █
-            </span>
-          </p>
+<p>
+  <span className="text-cyan-400">$</span>{" "}
+  Serviços: APIs REST • RPAs • Integrações • Sistemas internos
+</p>
+
+<p>
+  <span className="text-cyan-400">$</span>{" "}
+  Status: Building backend solutions...
+  <span className="animate-pulse text-cyan-400 ml-2">
+    █
+  </span>
+</p>
 
         </div>
 
