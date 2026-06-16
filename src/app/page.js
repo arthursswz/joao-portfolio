@@ -59,15 +59,12 @@ const experiences = [
 ];
 
 const skills = [
-  ["JavaScript", "90%"],
-  ["React / Next.js", "85%"],
-  ["TypeScript", "80%"],
-  ["HTML / CSS", "90%"],
-  ["Tailwind CSS", "85%"],
   ["Node.js", "70%"],
-  ["MySQL", "65%"],
+  ["Typescript", "55%"],
+  ["Mysql", "55%"],
+  ["HTML / CSS", "80%"],
   ["Git & GitHub", "75%"],
-  ["C", "75%"],
+  ["C", "80%"],
   ["Java", "45%"],
 ];
 
@@ -81,6 +78,26 @@ const learning = [
 ];
 
 export default function Home() {
+  const [loadingProjects, setLoadingProjects] = React.useState(false);
+
+  function handleViewProjectsClick(e) {
+    e.preventDefault();
+
+    setLoadingProjects(true);
+
+    setTimeout(() => {
+      setLoadingProjects(false);
+
+      const projectsSection = document.querySelector("#projects");
+
+      if (projectsSection) {
+        projectsSection.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      }
+    }, 900);
+  }
 
   return (
     <div className="min-h-screen bg-[#050816] text-white flex overflow-hidden relative">
@@ -228,6 +245,17 @@ export default function Home() {
 
       {/* MAIN CONTENT */}
       <main className="flex-1 overflow-hidden relative z-10">
+                {loadingProjects && (
+          <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/80 backdrop-blur-md">
+            <div className="flex flex-col items-center gap-5">
+              <div className="w-16 h-16 border-2 border-cyan-400 border-t-fuchsia-500 rounded-full animate-spin shadow-[0_0_35px_rgba(34,211,238,.45)]" />
+
+              <p className="cyber-font text-cyan-400 tracking-[0.3em] text-sm">
+                LOADING PROJECTS...
+              </p>
+            </div>
+          </div>
+        )}
         {/* HERO */}
         <motion.header
           id="home"
@@ -236,22 +264,24 @@ export default function Home() {
           variants={fadeUp}
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="
-            min-h-screen
-            flex
-            flex-col
-            justify-center
-            px-6
-            md:px-20
-            relative
-          "
+  min-h-screen
+  flex
+  flex-col
+  justify-center
+  px-6
+  md:px-20
+  py-24
+  lg:py-0
+  relative
+"
         >
-          <div className="max-w-6xl grid lg:grid-cols-2 gap-16 items-center">
+          <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
             {/* IMAGE */}
             <motion.div
               initial={{ opacity: 0, scale: 0.85, y: 30 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               transition={{ duration: 0.9, delay: 0.2, ease: "easeOut" }}
-              className="relative flex justify-center lg:order-2"
+              className="relative flex justify-center order-2 lg:order-2"
             >
               {/* GLOW */}
               <div
@@ -270,12 +300,16 @@ export default function Home() {
                 whileHover={{ scale: 1.04 }}
                 transition={{ duration: 0.3 }}
                 className="
-                  relative
-                  w-[300px]
-                  h-[300px]
-                  rounded-full
-                  overflow-hidden
-                  border
+  relative
+  w-[190px]
+  h-[190px]
+  sm:w-[240px]
+  sm:h-[240px]
+  md:w-[300px]
+  md:h-[300px]
+  rounded-full
+  overflow-hidden
+  border
                   border-cyan-400/30
                   shadow-[0_0_40px_rgba(0,255,255,.2)]
                   hover:shadow-[0_0_60px_rgba(217,70,239,.3)]
@@ -290,7 +324,8 @@ export default function Home() {
             </motion.div>
 
             {/* TEXT */}
-            <div className="lg:order-1">
+            {/* TEXT */}
+<div className="order-1 lg:order-1 text-center lg:text-left">
               <p
                 className="
                   cyber-font
@@ -305,10 +340,11 @@ export default function Home() {
               </p>
 
               <h1
-                className="
-                  cyber-font
-                  text-5xl
-                  md:text-8xl
+  className="
+    cyber-font
+    text-4xl
+    sm:text-5xl
+    md:text-8xl
                   font-black
                   leading-tight
                   tracking-wide
@@ -318,20 +354,22 @@ export default function Home() {
                 João Arthur
               </h1>
 
-              <h2
-                className="
-                  cyber-font
-                  text-3xl
-                  md:text-5xl
-                  font-black
-                  text-fuchsia-500
-                  mt-2
-                  tracking-[0.2em]
-                  uppercase
-                "
-              >
-                de Oliveira Silva
-              </h2>
+            <h2
+  className="
+    cyber-font
+    text-2xl
+    sm:text-3xl
+    md:text-5xl
+    font-black
+    text-fuchsia-500
+    mt-2
+    tracking-[0.12em]
+    md:tracking-[0.2em]
+    uppercase
+  "
+>
+  de Oliveira Silva
+</h2>
 
               <p
                 className="
@@ -348,11 +386,13 @@ export default function Home() {
                 software, dados e infraestrutura.
               </p>
 
-              {/* BUTTONS */}
-              <div className="mt-12 flex flex-col items-start gap-4">
-                <div className="flex gap-4 flex-wrap">
+                            {/* BUTTONS */}
+             {/* BUTTONS */}
+<div className="mt-10 w-full flex flex-col items-center lg:items-start gap-4">
+  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full max-w-sm sm:max-w-xl">
                   <motion.a
                     href="#projects"
+                    onClick={handleViewProjectsClick}
                     whileHover={{ scale: 1.06, y: -4 }}
                     whileTap={{ scale: 0.96 }}
                     className="
@@ -369,6 +409,7 @@ export default function Home() {
                       transition
                       duration-300
                       tracking-widest
+                      text-center
                     "
                   >
                     VIEW PROJECTS
@@ -391,13 +432,14 @@ export default function Home() {
                       transition
                       duration-300
                       tracking-widest
+                      text-center
                     "
                   >
                     ABOUT SYSTEM
                   </motion.a>
 
                   <motion.a
-                    href="https://github.com/SEU-USUARIO"
+                    href="https://github.com/arthursswz"
                     target="_blank"
                     rel="noopener noreferrer"
                     whileHover={{ scale: 1.06, y: -4 }}
@@ -415,20 +457,19 @@ export default function Home() {
                       transition
                       duration-300
                       tracking-widest
+                      text-center
                     "
                   >
                     GITHUB
                   </motion.a>
-                </div>
 
-                <div className="w-full flex justify-center md:justify-start">
                   <motion.a
                     href="/curriculo.pdf"
-                    whileHover={{ scale: 1.08, y: -4 }}
+                    whileHover={{ scale: 1.06, y: -4 }}
                     whileTap={{ scale: 0.96 }}
                     className="
                       cyber-font
-                      px-10
+                      px-8
                       py-4
                       border
                       border-fuchsia-500/50
@@ -439,6 +480,7 @@ export default function Home() {
                       transition
                       duration-300
                       tracking-widest
+                      text-center
                     "
                   >
                     DOWNLOAD CV

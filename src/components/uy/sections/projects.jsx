@@ -2,9 +2,10 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { useInView } from "framer-motion";
 import { useGlitch } from "@/hooks/useGlitch";
+import { useRouter } from "next/navigation";
 
 const projects = [
   {
@@ -33,7 +34,33 @@ export default function Projects() {
   const inView = useInView(ref, { once: false, margin: "-100px" });
   const glitching = useGlitch(inView);
 
-  return (
+  const router = useRouter();
+  const [loadingProject, setLoadingProject] = useState(false);
+
+  function handleProjectClick(e, link) {
+    e.preventDefault();
+
+    setLoadingProject(true);
+
+    setTimeout(() => {
+      router.push(link);
+    }, 900);
+  }
+
+return (
+  <>
+    {loadingProject && (
+      <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/80 backdrop-blur-md">
+        <div className="flex flex-col items-center gap-5">
+          <div className="w-16 h-16 border-2 border-cyan-400 border-t-fuchsia-500 rounded-full animate-spin shadow-[0_0_35px_rgba(34,211,238,.45)]" />
+
+          <p className="cyber-font text-cyan-400 tracking-[0.3em] text-sm">
+            LOADING PROJECT...
+          </p>
+        </div>
+      </div>
+    )}
+
     <section
       id="projects"
       className="max-w-7xl mx-auto px-6 md:px-20 py-28"
@@ -186,27 +213,28 @@ export default function Projects() {
               </div>
 
               {/* BUTTON */}
-              <Link
-                href={project.link}
-                className="
-                  inline-flex
-                  items-center
-                  gap-3
-                  px-6
-                  py-4
-                  rounded-xl
-                  border
-                  border-fuchsia-500/40
-                  text-fuchsia-400
-                  hover:bg-fuchsia-500/10
-                  hover:shadow-[0_0_30px_rgba(217,70,239,.25)]
-                  transition
-                  duration-300
-                  tracking-widest
-                "
-              >
-                VIEW PROJECT →
-              </Link>
+         <Link
+  href={project.link}
+  onClick={(e) => handleProjectClick(e, project.link)}
+  className="
+    inline-flex
+    items-center
+    gap-3
+    px-6
+    py-4
+    rounded-xl
+    border
+    border-fuchsia-500/40
+    text-fuchsia-400
+    hover:bg-fuchsia-500/10
+    hover:shadow-[0_0_30px_rgba(217,70,239,.25)]
+    transition
+    duration-300
+    tracking-widest
+  "
+>
+  VIEW PROJECT →
+</Link>
 
             </div>
 
@@ -216,6 +244,7 @@ export default function Projects() {
 
       </div>
 
-    </section>
-  );
+         </section>
+  </>
+);
 }

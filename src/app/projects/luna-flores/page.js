@@ -1,22 +1,48 @@
 "use client";
-import Link from "next/link";
 
-export default function LunaFlores() {
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+
+  export default function LunaFlores() {
+     const router = useRouter();
+  const [loadingBack, setLoadingBack] = useState(false);
+
+  function handleBackClick() {
+    setLoadingBack(true);
+
+    setTimeout(() => {
+      router.push("/");
+    }, 900);
+  }
+
   return (
     <main className="min-h-screen bg-[#050816] text-white px-6 py-20">
+      {loadingBack && (
+  <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/80 backdrop-blur-md">
+    <div className="flex flex-col items-center gap-5">
+      <div className="w-16 h-16 border-2 border-cyan-400 border-t-fuchsia-500 rounded-full animate-spin shadow-[0_0_35px_rgba(34,211,238,.45)]" />
+
+      <p className="cyber-font text-cyan-400 tracking-[0.3em] text-sm">
+        RETURNING HOME...
+      </p>
+    </div>
+  </div>
+)}
       
-      <Link
-        href="/"
-        className="
-          inline-block
-          mb-10
-          text-cyan-400
-          hover:text-fuchsia-400
-          transition
-        "
-      >
-        ← voltar
-      </Link>
+   <button
+  type="button"
+  onClick={handleBackClick}
+  className="
+    inline-block
+    mb-10
+    text-cyan-400
+    hover:text-fuchsia-400
+    transition
+    cursor-pointer
+  "
+>
+  ← voltar
+</button>
 
       <div className="max-w-5xl mx-auto">
 
